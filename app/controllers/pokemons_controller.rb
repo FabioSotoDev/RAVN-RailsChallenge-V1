@@ -1,4 +1,5 @@
 class PokemonsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_pokemon, only: %i[show edit update destroy]
   skip_before_action :verify_authenticity_token
 
@@ -8,8 +9,7 @@ class PokemonsController < ApplicationController
   end
 
   # GET /pokemons/1 or /pokemons/1.json
-  def show
-  end
+  def show; end
 
   # GET /pokemons/new
   def new
@@ -17,8 +17,7 @@ class PokemonsController < ApplicationController
   end
 
   # GET /pokemons/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /pokemons or /pokemons.json
   def create
@@ -59,13 +58,12 @@ class PokemonsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_pokemon
-      @pokemon = Pokemon.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def pokemon_params
-      params.require(:pokemon).permit(:name, :image, :main_technique, :description, :countries => [], :types => [])
-    end
+  def set_pokemon
+    @pokemon = Pokemon.find(params[:id])
+  end
+
+  def pokemon_params
+    params.require(:pokemon).permit(:name, :image, :main_technique, :description, :countries => [], :types => [])
+  end
 end
