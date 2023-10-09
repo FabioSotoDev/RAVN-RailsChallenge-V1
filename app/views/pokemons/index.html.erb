@@ -17,7 +17,7 @@
   <tbody>
     <% @pokemons.each do |pokemon| %>
       <tr>
-        <td><img src="<%= pokemon.image %>" width="30px" height="30px"></td>
+        <td><img src="<%= pokemon.image %>" width="80px" height="80px" style="margin-top: -40px"></td>
         <td><%= pokemon.id %></td>
         <td><%= pokemon.name %></td>
         <td><%= pokemon.main_technique %></td>
@@ -35,3 +35,4 @@
 <br>
 
 <%= link_to 'New Pokemon', new_pokemon_path %>
+<%= link_to 'My Catches', catches_path %>

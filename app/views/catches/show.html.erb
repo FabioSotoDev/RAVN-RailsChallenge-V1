@@ -1,0 +1,12 @@
+<p>
+  <strong>Alias:</strong>
+  <%= @catch.alias %>
+</p>
+
+<p>
+  <strong>Captured At:</strong>
+  <%= @catch.created_at %>
+</p>
+
+<%= link_to 'Edit', edit_catch_path(@catch) %> |
+<%= link_to 'Back', catches_path %>

@@ -1,0 +1,34 @@
+<h1>Catches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Id</th>
+      <th>Alias</th>
+      <th>Name</th>
+      <th>Pokemon Id</th>
+      <th>Captured</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @catches.each do |catch| %>
+      <tr>
+        <td><img src="<%= catch.image %>" width="80px" height="80px" style="margin-top: -40px"></td>
+        <td><%= catch.id %></td>
+        <td><%= catch.alias %></td>
+        <td><%= catch.name %></td>
+        <td><%= catch.pokemon_id %></td>
+        <td><%= catch.captured_at %></td>
+        <td><%= link_to 'Edit', edit_catch_path(catch) %></td>
+        <td><%= link_to 'Destroy', catch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Catch', new_catch_path %>

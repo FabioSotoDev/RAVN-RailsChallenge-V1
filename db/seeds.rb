@@ -15,3 +15,39 @@ User.create(
   password_confirmation: 'changeme',
   role: 'admin'
 )
+
+Pokemon.create(
+  name: 'Pikachu',
+  main_technique: 'Thunder',
+  image: 'https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/pikachu.png',
+  countries: ['Peru, USA'],
+  types: ['Electric'],
+  description: 'Starter electric pokemon'
+)
+
+Pokemon.create(
+  name: 'Charmander',
+  main_technique: 'Flamethrower',
+  image: 'https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/charmander.png',
+  countries: ['Peru, USA'],
+  types: ['Fire'],
+  description: 'Starter fire pokemon'
+)
+
+Pokemon.create(
+  name: 'Bulbasaur',
+  main_technique: 'Razor Leaf',
+  image: 'https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/bulbasaur.png',
+  countries: ['Peru, USA'],
+  types: ['Grass, Poison'],
+  description: 'Starter plant pokemon'
+)
+
+Pokemon.create(
+  name: 'Squirtle',
+  main_technique: 'Water Gun',
+  image: 'https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/squirtle.png',
+  countries: ['Peru, USA'],
+  types: ['Water'],
+  description: 'Starter water pokemon'
+)

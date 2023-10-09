@@ -1,0 +1,22 @@
+<h1>Pokemons List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Id</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pokemons.each do |pokemon| %>
+      <tr>
+        <td><img src="<%= pokemon.image %>" width="80px" height="80px" style="margin-top: -40px"></td>
+        <td><%= pokemon.id %></td>
+        <td><%= pokemon.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

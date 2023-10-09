@@ -1,7 +1,7 @@
 class PokemonsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
   before_action :set_pokemon, only: %i[show edit update destroy]
-  skip_before_action :verify_authenticity_token
 
   # GET /pokemons or /pokemons.json
   def index

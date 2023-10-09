@@ -1,0 +1,27 @@
+<%= form_with(model: catch, local: true) do |form| %>
+  <% if catch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(catch.errors.count, "error") %> prohibited this catch from being saved:</h2>
+
+      <ul>
+        <% catch.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :alias %>
+    <%= form.text_field :alias %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Pokemon Id" %>
+    <%= form.text_field :pokemon_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

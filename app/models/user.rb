@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :catches, dependent: :destroy
+  has_many :pokemons, through: :catches
 
   enum role: { trainer: 0, admin: 1 }
 end
