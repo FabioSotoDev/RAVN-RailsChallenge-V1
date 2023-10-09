@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users
 
@@ -11,4 +13,6 @@ Rails.application.routes.draw do
   resources :users
   resources :pokemons
   resources :catches
+
+  mount Sidekiq::Web => '/sidekiq'
 end

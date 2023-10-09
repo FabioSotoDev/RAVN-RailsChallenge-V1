@@ -17,12 +17,12 @@ class CatchesController < ApplicationController
   # POST /catch or /catch.json
   def create
     @catch = Catch.new(user_id: current_user.id, pokemon_id: catch_params[:pokemon_id], alias: catch_params[:alias])
-    @user = User.find(current_user.id)
     @pokemon = Pokemon.find(catch_params[:pokemon_id])
 
     respond_to do |format|
       if @catch.save
         CatchNotifierMailer.with(user: @user, pokemon: @pokemon).send_catch.deliver_later
+        @user = User.update(current_user.id, last_capture: @catch.created_at)
         format.html { redirect_to catch_url(@catch.id), notice: "Catch was successfully created." }
         format.json { render :show, status: :created, location: @catch.id }
       else
