@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_04_085835) do
+ActiveRecord::Schema.define(version: 2023_10_09_055513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,4 +57,16 @@ ActiveRecord::Schema.define(version: 2023_10_04_085835) do
 
   add_foreign_key "catches", "pokemons"
   add_foreign_key "catches", "users"
+
+  create_view "report_catches", sql_definition: <<-SQL
+      SELECT pokemons.id,
+      pokemons.name,
+      pokemons.image,
+      count(catches.pokemon_id) AS count_pokemon
+     FROM (catches
+       JOIN pokemons ON ((pokemons.id = catches.pokemon_id)))
+    GROUP BY pokemons.id
+    ORDER BY (count(catches.pokemon_id)) DESC
+   LIMIT 5;
+  SQL
 end

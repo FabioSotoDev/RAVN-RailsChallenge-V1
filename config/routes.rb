@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/sign-in' => 'devise/sessions#new', :as => :login
   end
 
+  resources :dashboard
   resources :users
   resources :pokemons
   resources :catches
