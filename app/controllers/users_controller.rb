@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = current_user.role == 'admin' ? User.all : User.where(id: current_user.id)
   end
 
   # GET /users/1 or /users/1.json
@@ -63,6 +63,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.fetch(:user, {})
+    params.require(:user).permit(:first_name, :last_name, :email, :image, :country)
   end
 end

@@ -34,5 +34,7 @@
 
 <br>
 
+<% if current_user.role == 'admin' %>
 <%= link_to 'New Pokemon', new_pokemon_path %>
+<% end %>
 <%= link_to 'My Catches', catches_path %>

@@ -7,8 +7,14 @@ class ApplicationController < ActionController::Base
       super
     else
       redirect_to login_url, :notice => 'User is not logged in'
-      ## if you want render 404 page
-      ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
+    end
+  end
+
+  def admin!
+    if current_user.role == 'admin'
+      super
+    else
+      redirect_to catches_url, :notice => 'User is not admin'
     end
   end
 end
