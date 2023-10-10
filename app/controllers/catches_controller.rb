@@ -21,7 +21,7 @@ class CatchesController < ApplicationController
 
     respond_to do |format|
       if @catch.save
-        CatchNotifierMailer.with(user: @user, pokemon: @pokemon).send_catch.deliver_later
+        CatchNotifierMailer.with(user: @user, pokemon: @pokemon).send_catch.deliver_later # callback
         @user = User.update(current_user.id, last_capture: @catch.created_at)
         format.html { redirect_to catch_url(@catch.id), notice: "Catch was successfully created." }
         format.json { render :show, status: :created, location: @catch.id }
